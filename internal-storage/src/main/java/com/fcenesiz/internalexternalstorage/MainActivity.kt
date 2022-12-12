@@ -1,7 +1,9 @@
 package com.fcenesiz.internalexternalstorage
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.fcenesiz.internalexternalstorage.databinding.ActivityMainBinding
 import java.io.FileOutputStream
 
@@ -15,8 +17,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.buttonSaveToFile.setOnClickListener { saveToFile() }
+        binding.buttonShowFileContent.setOnClickListener { showFileContent() }
         binding.buttonInternalStorageFilePath.setOnClickListener { showInternalStorageFilePath() }
-        binding.buttonShowFiles.setOnClickListener { showFiles() }
+        binding.buttonInternalStorageFileList.setOnClickListener { showFileList() }
         binding.buttonDeleteFileByName.setOnClickListener { deleteFileByName() }
     }
 
@@ -39,16 +42,31 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun showInternalStorageFilePath(){
-
+    fun showFileContent(){
+        startActivity(Intent(this, ShowStorageActivity::class.java))
     }
 
-    fun showFiles(){
+    fun showInternalStorageFilePath(){
+        val filePath = "" + this.filesDir
+        binding.textViewInternalStorageFilePath.text = filePath
+    }
 
+    fun showFileList(){
+        val fileList = fileList()
+        val builder = StringBuilder()
+        fileList.forEach { builder.append(it).append(", ") }
+        binding.textViewFileNames.text = builder
     }
 
     fun deleteFileByName(){
-
+        val filename = binding.editTextFileNameToBeDeleted.text.toString()
+        val deleted = deleteFile(filename)
+        if (deleted) {
+            Toast.makeText(this, "File Deleted", Toast.LENGTH_SHORT).show()
+        }else
+        {
+            Toast.makeText(this, "File Not Found!", Toast.LENGTH_SHORT).show()
+        }
     }
 
 }

@@ -59,7 +59,7 @@
             android:text="Save to FILE" />
 
         <Button
-            android:id="@+id/buttonShowFiles"
+            android:id="@+id/button_show_file_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="SHow FILES" />

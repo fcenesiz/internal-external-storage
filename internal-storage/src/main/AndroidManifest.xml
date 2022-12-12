@@ -13,9 +13,17 @@
         android:theme="@style/Theme.InternalExternalStorage"
         tools:targetApi="31">
         <activity
+            android:name=".ShowStorageActivity"
+            android:label="Show Storage"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".MainActivity"
-            android:label="Internal Storage"
-            android:exported="true">
+            android:exported="true"
+            android:label="Internal Storage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
