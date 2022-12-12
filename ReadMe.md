@@ -27,3 +27,25 @@ close the ``FileOutputStream``
 also internal cache storage is same 
 - to access cache file, need to use ``getCacheDir()`` method
 - Limited for ``1 MB``
+
+## external-storage
+
+Files are saved on device's external storage such as SD Card
+
+The saved files can be private or public
+- ``getExternalFileDir()`` 
+  - Private Files, deleted when the app is uninstalled
+  - Files belong to your own app but technically user and other apps have access to it
+
+
+- ``getExternalStoragePublicDirectory()`` 
+  - Public Files, not deleted on uninstallation of the app
+  - Files can be used by your app, other apps and the user.
+
+Not always available for use
+- if user removes the SD Card the files become inaccessible
+- if SD Card is mounted as USD storage the files are out of reach
+
+Always check for its availability before using external storage
+
+- to access cache file, need to use ``getExternalCacheDir()`` method
