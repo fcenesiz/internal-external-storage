@@ -24,3 +24,6 @@ write the data in the form of bytes to a file
 - ``close()``
 close the ``FileOutputStream``
 
+also internal cache storage is same 
+- to access cache file, need to use ``getCacheDir()`` method
+- Limited for ``1 MB``
